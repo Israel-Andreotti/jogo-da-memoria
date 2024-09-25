@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+    background-color: #fc1e8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    user-select: none;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background: linear-gradient(325deg, 
+    #03001e 0%, 
+    #7303c0 30%, 
+    #EC38BC 70%, 
+    #ddd1da 100%
+    );
+    padding: 3rem 4rem;
+    border-radius: 10px;
+}
+
+.container h2 {
+    color: white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+
+.container button {
+    padding: .7rem 1.2rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.3rem;
+    width: 100%;
+    transition: .3s;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-weight: 500;
+}
+
+.container button:hover {
+    cursor: pointer;
+    background-color: rgb(207, 207, 207);
+}
+
+.game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1edf0;
+    font-size: 3rem;
+    transform: rotateY(180deg);
+    transition: .5s;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+/* cria o pseudo elemento que cobre a carta */
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #404040;
+    transition: .5;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after, .boxMatch::after {
+    transform: rotateY(180deg);
+}
